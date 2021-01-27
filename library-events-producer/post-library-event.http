@@ -1,0 +1,14 @@
+POST http://localhost:8080/v1/library-event
+Content-Type: application/json
+
+{
+  "id": null,
+  "book": {
+    "id": 1,
+    "name": "War and world",
+    "author": "Tolstoy"
+  }
+}
+
+###
+
