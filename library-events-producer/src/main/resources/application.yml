@@ -2,9 +2,11 @@ spring:
   profiles:
     active: local
   kafka:
+    template:
+      default-topic: library-events
     producer:
       key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.example.libraryeventsproducer.serialization.LibraryEventSerializer
 ---
 spring:
   config:
