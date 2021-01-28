@@ -13,16 +13,11 @@ spring:
     activate:
       on-profile: local
   kafka:
-    producer:
-      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
-    admin:
-      properties:
-        bootstrap.servers: localhost:9092,localhost:9093,localhost:9094
+    bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
 ---
 spring:
   config:
     activate:
       on-profile: dev
   kafka:
-    producer:
-      bootstrap-servers: dev:9092,dev:9093,dev:9094
+    bootstrap-servers: dev:9092,dev:9093,dev:9094

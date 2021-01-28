@@ -11,5 +11,13 @@
 
     <artifactId>library-events-producer</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.rainerhahnekamp</groupId>
+            <artifactId>sneakythrow</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
