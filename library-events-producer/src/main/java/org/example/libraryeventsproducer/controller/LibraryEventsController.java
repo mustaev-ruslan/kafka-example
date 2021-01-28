@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 @Slf4j
@@ -18,7 +20,7 @@ public class LibraryEventsController {
     private final LibraryEventProducer libraryEventProducer;
 
     @PostMapping("/v1/async-library-event")
-    public ResponseEntity<LibraryEvent> postAsyncLibraryEvent(@RequestBody LibraryEvent libraryEvent) {
+    public ResponseEntity<LibraryEvent> postAsyncLibraryEvent(@RequestBody @Valid LibraryEvent libraryEvent) {
         log.info("Before sendAsyncLibraryEvent");
         libraryEventProducer.sendAsyncLibraryEvent(libraryEvent);
         log.info("After sendAsyncLibraryEvent");
