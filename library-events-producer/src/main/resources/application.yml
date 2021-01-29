@@ -7,6 +7,10 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
       value-serializer: org.example.libraryeventsproducer.serialization.LibraryEventSerializer
+      retries: 3
+      properties:
+        retry.backoff.ms: 50
+
 ---
 spring:
   config:
