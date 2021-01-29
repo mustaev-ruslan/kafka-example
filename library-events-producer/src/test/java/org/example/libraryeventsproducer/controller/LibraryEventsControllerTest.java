@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(LibraryEventsController.class)
@@ -41,4 +42,23 @@ class LibraryEventsControllerTest {
         // Then
         resultActions.andExpect(status().isCreated());
     }
+
+    @Test
+    void postAsyncLibraryEvent_badRequest() throws Exception {
+        // Given
+        LibraryEvent libraryEvent = LibraryEvent.builder()
+                .book(Book.builder().id(1).name("Iliad").author("").build())
+                .build();
+
+        // When
+        ResultActions resultActions = mockMvc.perform(post("/v1/async-library-event")
+                .content(objectMapper.writeValueAsString(libraryEvent))
+                .contentType(MediaType.APPLICATION_JSON));
+
+        // Then
+        resultActions
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("book.author must not be blank"));
+    }
+
 }
