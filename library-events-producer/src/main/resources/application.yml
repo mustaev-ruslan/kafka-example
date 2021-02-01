@@ -6,7 +6,7 @@ spring:
       default-topic: library-events
     producer:
       key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
-      value-serializer: org.example.libraryeventsproducer.serialization.LibraryEventSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       retries: 3
       properties:
         retry.backoff.ms: 50
