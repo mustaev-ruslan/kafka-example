@@ -6,6 +6,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>library-events-producer</module>
+        <module>library-events-consumer</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -19,6 +20,7 @@
 
     <properties>
         <java.version>14</java.version>
+        <jackson.version>2.12.1</jackson.version>
     </properties>
     <dependencies>
         <dependency>
@@ -31,12 +33,23 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

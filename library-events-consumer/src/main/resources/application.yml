@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: local
+  kafka:
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: library-events-listner-group
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: org.example.libraryeventsconsumer.domain.LibraryEvent
+            use:
+              type:
+                headers: false
+    listener:
+      ack-mode: manual
+      concurrency: 3
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  kafka:
+    bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  kafka:
+    bootstrap-servers: dev:9092,dev:9093,dev:9094
