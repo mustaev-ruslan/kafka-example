@@ -5,20 +5,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
+@Entity
 public class Book {
 
-    @NotNull
+    @Id
     private Integer id;
-    @NotBlank
     private String name;
-    @NotBlank
     private String author;
 
 }

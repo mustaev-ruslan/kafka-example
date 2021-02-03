@@ -5,18 +5,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
+@Entity
 public class LibraryEvent {
 
+    @Id
+    @GeneratedValue
     private Integer id;
-    @NotNull
-    @Valid
+    @OneToOne(cascade = CascadeType.ALL)
     private Book book;
 
 }
