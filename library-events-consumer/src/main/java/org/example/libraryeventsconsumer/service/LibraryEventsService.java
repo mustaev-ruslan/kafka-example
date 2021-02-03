@@ -14,7 +14,13 @@ public class LibraryEventsService {
     private final LibraryEventsRepository libraryEventsRepository;
 
     public void processLibraryEvent(LibraryEvent libraryEvent) {
-        libraryEventsRepository.save(libraryEvent);
+        log.info("Try process");
+        switch (libraryEvent.getBook().getId()) {
+            case 400 -> throw new IllegalArgumentException("Illegal argument id 400");
+            case 401 -> throw new IllegalAccessError("Illegal access id 401");
+            case 500 -> throw new IllegalStateException("Illegal app state for id 500");
+            default -> libraryEventsRepository.save(libraryEvent);
+        }
     }
 
 }
